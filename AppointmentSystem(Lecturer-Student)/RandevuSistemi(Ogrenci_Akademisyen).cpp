@@ -31,7 +31,7 @@ void write_appointment_on_document(Student *students,int student_count,Academici
 void main_menu(Student *students,Academician *academicians,int &student_count,int &academician_count);
 bool file_is_empty(ifstream &document);
 
-int main(){		///////////////////////////////	ogrenci, akademisyenleri dosyalari varsa ve bos degilse once sayilarini sayip sonra sayilari kadar nesne dizisi olusturup randevulari da varsa yine dosyadan ekledim.
+int main(){
 	int student_count, academician_count;
 	Student *students;
 	Academician *academicians;
@@ -400,16 +400,6 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 				academician_count++;
 				academicians=new Academician[academician_count];
 				add_academician_by_user(academicians, academician_count);
-//				ofstream academician_file;
-//				academician_file.open("academicians.txt",ios::app);
-//				academician_file<<academicians[academician_count-1].get_registration_number()<<" ";
-//				academician_file<<academicians[academician_count-1].get_name()<<" ";
-//				academician_file<<academicians[academician_count-1].get_surname()<<" ";
-//				academician_file<<academicians[academician_count-1].get_majors_branch()<<" ";
-//				academician_file<<academicians[academician_count-1].get_e_mail()<<" ";
-//				academician_file<<academicians[academician_count-1].get_telephone()<<" ";
-//				academician_file<<academicians[academician_count-1].get_degree();
-//				academician_file.close();
 				cout<<academicians[academician_count - 1].get_registration_number()<<" sicil numarali akademisyen eklendi.";Sleep(1000);goto main_screen;
 			}
 			else{
@@ -835,24 +825,10 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 			end_time_minute=(begin_time_minute+appointment_length)%60;
 			completed_begin_time = begin_time_hour * 100 + begin_time_minute;
 			completed_end_time = end_time_hour * 100 + end_time_minute;
-			//students[select_student-1].add_appointment(academicians[select_academician-1]);
 			if(students[select_student-1].get_appointment_count()==0){
 				if(academicians[select_academician-1].get_appointment_count()==0){
 					students[select_student-1].add_appointment_by_user(academicians[select_academician-1].get_registration_number(),date,begin_time,appointment_length);
 					academicians[select_academician-1].add_appointment_by_user(students[select_student-1].get_student_no(),date,begin_time,appointment_length);
-//					students[select_student-1].r=new Randevu[1];
-//					students[select_student-1].r[0].set_kisi(akademisyenler[akademisyen_sec-1].getsicil_no());
-//					students[select_student-1].r[0].set_tarih(tarih);
-//					students[select_student-1].r[0].set_baslangic_saat(baslangic_saat);
-//					students[select_student-1].r[0].set_bitis_saat(baslangic_saat,appointment_length);
-//					students[select_student-1].set_randevu_say(ogrenciler[ogrenci_sec-1].get_randevu_say()+1);
-//					akademisyenler[akademisyen_sec-1].r=new Randevu[1];
-//					akademisyenler[akademisyen_sec-1].r[0].set_kisi(ogrenciler[ogrenci_sec-1].getno());
-//					akademisyenler[akademisyen_sec-1].r[0].set_tarih(tarih);
-//					akademisyenler[akademisyen_sec-1].r[0].set_baslangic_saat(baslangic_saat);
-//					akademisyenler[akademisyen_sec-1].r[0].set_bitis_saat(baslangic_saat,randevu_sure);
-//					akademisyenler[akademisyen_sec-1].set_randevu_say(akademisyenler[akademisyen_sec-1].get_randevu_say()+1);
-
 					write_appointment_on_document(students,student_count,academicians,academician_count);
 					cout<<"Randevu olusturuldu."<<endl;
 					Sleep(1000);goto create_appointment_screen;
@@ -862,52 +838,8 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 						cout<<endl<<"Secilen akademisyenin belirtilen zaman icinde randevusu bulunmakta!"<<endl;Sleep(1500);
 						goto create_appointment_screen;
 					}
-					
-//					for(int i=0;i<academicians[select_academician-1].get_appointment_count();i++){
-//						if(academicians[select_academician-1].get_appointment_date(i) == date){
-//							int registered_begin_hour, registered_begin_minute, registered_end_hour, registered_end_minute, registered_completed_begin_time, registered_completed_end_time;
-//							registered_begin_hour=atoi(academicians[select_academician-1].get_appointment_begin_time(i).substr(0,2).c_str());
-//							registered_begin_minute=atoi(academicians[select_academician-1].get_appointment_begin_time(i).substr(3,2).c_str());
-//							registered_end_hour=atoi(academicians[select_academician-1].get_appointment_end_time(i).substr(0,2).c_str());
-//							registered_end_minute=atoi(academicians[select_academician-1].get_appointment_end_time(i).substr(3,2).c_str());
-//							registered_completed_begin_time = registered_begin_hour * 100 + registered_begin_minute;
-//							registered_completed_end_time = registered_end_hour * 100 + registered_end_minute;
-//							if((completed_begin_time>=registered_completed_begin_time && completed_begin_time < registered_completed_end_time) || (registered_completed_end_time>registered_completed_begin_time && completed_end_time<=registered_completed_end_time)){
-//								cout<<endl<<"Secilen akademisyenin belirtilen zaman icinde randevusu bulunmakta!"<<endl;Sleep(1500);
-//								goto create_appointment_screen;
-//							}
-//						}
-//					}
-
 					students[select_student-1].add_appointment_by_user(academicians[select_academician-1].get_registration_number(),date,begin_time,appointment_length);
-					
-//					ogrenciler[ogrenci_sec-1].r=new Randevu[1];
-//					ogrenciler[ogrenci_sec-1].r[0].set_kisi(akademisyenler[akademisyen_sec-1].getsicil_no());
-//					ogrenciler[ogrenci_sec-1].r[0].set_tarih(tarih);
-//					ogrenciler[ogrenci_sec-1].r[0].set_baslangic_saat(baslangic_saat);
-//					ogrenciler[ogrenci_sec-1].r[0].set_bitis_saat(baslangic_saat,randevu_sure);
-//					ogrenciler[ogrenci_sec-1].set_randevu_say(ogrenciler[ogrenci_sec-1].get_randevu_say()+1);
 					academicians[select_academician-1].add_appointment_by_user(students[select_student-1].get_student_no(),date,begin_time,appointment_length);
-//					Randevu *temp=new Randevu[akademisyenler[akademisyen_sec-1].get_randevu_say()];
-//					for(int i=0;i<akademisyenler[akademisyen_sec-1].get_randevu_say();i++){
-//						temp[i].set_kisi(akademisyenler[akademisyen_sec-1].r[i].get_kisi());
-//						temp[i].set_tarih(akademisyenler[akademisyen_sec-1].r[i].get_tarih());
-//						temp[i].set_baslangic_saat(akademisyenler[akademisyen_sec-1].r[i].get_baslangic_saat());
-//						temp[i].set_bitis_saat(akademisyenler[akademisyen_sec-1].r[i].get_baslangic_saat(),randevu_sure);
-//					}
-//					akademisyenler[akademisyen_sec-1].set_randevu_say(akademisyenler[akademisyen_sec-1].get_randevu_say()+1);
-//					akademisyenler[akademisyen_sec-1].r=new Randevu[akademisyenler[akademisyen_sec-1].get_randevu_say()];
-//					for(int i=0;i<akademisyenler[akademisyen_sec-1].get_randevu_say()-1;i++){
-//						akademisyenler[akademisyen_sec-1].r[i].set_kisi(temp[i].get_kisi());
-//						akademisyenler[akademisyen_sec-1].r[i].set_tarih(temp[i].get_tarih());
-//						akademisyenler[akademisyen_sec-1].r[i].set_baslangic_saat(temp[i].get_baslangic_saat());
-//						akademisyenler[akademisyen_sec-1].r[i].set_bitis_saat(temp[i].get_baslangic_saat(),randevu_sure);
-//					}
-//					delete[] temp;
-//					akademisyenler[akademisyen_sec-1].r[akademisyenler[akademisyen_sec-1].get_randevu_say()-1].set_kisi(ogrenciler[ogrenci_sec-1].getno());
-//					akademisyenler[akademisyen_sec-1].r[akademisyenler[akademisyen_sec-1].get_randevu_say()-1].set_tarih(tarih);
-//					akademisyenler[akademisyen_sec-1].r[akademisyenler[akademisyen_sec-1].get_randevu_say()-1].set_baslangic_saat(baslangic_saat);
-//					akademisyenler[akademisyen_sec-1].r[akademisyenler[akademisyen_sec-1].get_randevu_say()-1].set_bitis_saat(baslangic_saat,randevu_sure);
 					write_appointment_on_document(students,student_count,academicians,academician_count);
 					cout<<"Randevu olusturuldu."<<endl;Sleep(1000);
 					goto create_appointment_screen;
@@ -918,49 +850,7 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 					cout<<endl<<"Secilen ogrencinin belirtilen zaman icinde randevusu bulunmakta!"<<endl;Sleep(1500);
 					goto create_appointment_screen;
 				}
-//				for(int i=0;i<ogrenciler[ogrenci_sec-1].get_randevu_say();i++){
-//						if(ogrenciler[ogrenci_sec-1].r[i].get_tarih()==tarih){
-//							int kayitli_bsl_saat,kayitli_bsl_dakika,kayitli_bts_saat,kayitli_bts_dakika,kayitli_bsl_tum_saat,kayitli_bts_tum_saat;
-//							kayitli_bsl_saat=atoi(ogrenciler[ogrenci_sec-1].r[i].get_baslangic_saat().substr(0,2).c_str());
-//							kayitli_bsl_dakika=atoi(ogrenciler[ogrenci_sec-1].r[i].get_baslangic_saat().substr(3,2).c_str());
-//							kayitli_bts_saat=atoi(ogrenciler[ogrenci_sec-1].r[i].get_bitis_saat().substr(0,2).c_str());
-//							kayitli_bts_dakika=atoi(ogrenciler[ogrenci_sec-1].r[i].get_bitis_saat().substr(3,2).c_str());
-//							kayitli_bsl_tum_saat=kayitli_bsl_saat*100+kayitli_bsl_dakika;
-//							kayitli_bts_tum_saat=kayitli_bts_saat*100+kayitli_bts_dakika;
-//							if((bsl_tum_saat>=kayitli_bsl_tum_saat && bsl_tum_saat<kayitli_bts_tum_saat) || (bts_tum_saat>kayitli_bsl_tum_saat && bts_tum_saat<=kayitli_bts_tum_saat)){
-//								cout<<endl<<"Secilen ogrencinin belirtilen zaman icinde randevusu bulunmakta!"<<endl;Sleep(1500);
-//								goto create_appointment_screen;
-//							}	
-//						}
-//					}
 				if(academicians[select_academician-1].get_appointment_count()==0){
-					
-//					akademisyenler[akademisyen_sec-1].r=new Randevu[1];
-//					akademisyenler[akademisyen_sec-1].r[0].set_kisi(ogrenciler[ogrenci_sec-1].getno());
-//					akademisyenler[akademisyen_sec-1].r[0].set_tarih(tarih);
-//					akademisyenler[akademisyen_sec-1].r[0].set_baslangic_saat(baslangic_saat);
-//					akademisyenler[akademisyen_sec-1].r[0].set_bitis_saat(baslangic_saat,randevu_sure);
-//					akademisyenler[akademisyen_sec-1].set_randevu_say(akademisyenler[akademisyen_sec-1].get_randevu_say()+1);
-//					Randevu *temp=new Randevu[ogrenciler[ogrenci_sec-1].get_randevu_say()];
-//					for(int i=0;i<ogrenciler[ogrenci_sec-1].get_randevu_say();i++){
-//						temp[i].set_kisi(ogrenciler[ogrenci_sec-1].r[i].get_kisi());
-//						temp[i].set_tarih(ogrenciler[ogrenci_sec-1].r[i].get_tarih());
-//						temp[i].set_baslangic_saat(ogrenciler[ogrenci_sec-1].r[i].get_baslangic_saat());
-//						temp[i].set_bitis_saat(ogrenciler[ogrenci_sec-1].r[i].get_baslangic_saat(),randevu_sure);
-//					}
-//					ogrenciler[ogrenci_sec-1].set_randevu_say(ogrenciler[ogrenci_sec-1].get_randevu_say()+1);
-//					ogrenciler[ogrenci_sec-1].r=new Randevu[ogrenciler[ogrenci_sec-1].get_randevu_say()];
-//					for(int i=0;i<ogrenciler[ogrenci_sec-1].get_randevu_say()-1;i++){
-//						ogrenciler[ogrenci_sec-1].r[i].set_kisi(temp[i].get_kisi());
-//						ogrenciler[ogrenci_sec-1].r[i].set_tarih(temp[i].get_tarih());
-//						ogrenciler[ogrenci_sec-1].r[i].set_baslangic_saat(temp[i].get_baslangic_saat());
-//						ogrenciler[ogrenci_sec-1].r[i].set_bitis_saat(temp[i].get_baslangic_saat(),randevu_sure);
-//					}
-//					delete[] temp;
-//					ogrenciler[ogrenci_sec-1].r[ogrenciler[ogrenci_sec-1].get_randevu_say()-1].set_kisi(akademisyenler[akademisyen_sec-1].getsicil_no());
-//					ogrenciler[ogrenci_sec-1].r[ogrenciler[ogrenci_sec-1].get_randevu_say()-1].set_tarih(tarih);
-//					ogrenciler[ogrenci_sec-1].r[ogrenciler[ogrenci_sec-1].get_randevu_say()-1].set_baslangic_saat(baslangic_saat);
-//					ogrenciler[ogrenci_sec-1].r[ogrenciler[ogrenci_sec-1].get_randevu_say()-1].set_bitis_saat(baslangic_saat,randevu_sure);
 					academicians[select_academician-1].add_appointment_by_user(students[select_student-1].get_student_no(),date,begin_time,appointment_length);
 					students[select_student-1].add_appointment_by_user(academicians[select_academician-1].get_registration_number(),date,begin_time,appointment_length);
 					write_appointment_on_document(students,student_count,academicians,academician_count);
@@ -971,64 +861,7 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 					if(!academicians[select_academician-1].avoidence_to_appointment_similarity(date,completed_begin_time,completed_end_time)){
 						cout<<endl<<"Secilen akademisyenin belirtilen zaman icinde randevusu bulunmakta!"<<endl;Sleep(1500);
 						goto create_appointment_screen;
-					}
-//					for(int i=0;i<akademisyenler[akademisyen_sec-1].get_randevu_say();i++){
-//						if(akademisyenler[akademisyen_sec-1].r[i].get_tarih()==tarih){
-//							int kayitli_bsl_saat,kayitli_bsl_dakika,kayitli_bts_saat,kayitli_bts_dakika,kayitli_bsl_tum_saat,kayitli_bts_tum_saat;
-//							kayitli_bsl_saat=atoi(akademisyenler[akademisyen_sec-1].r[i].get_baslangic_saat().substr(0,2).c_str());
-//							kayitli_bsl_dakika=atoi(akademisyenler[akademisyen_sec-1].r[i].get_baslangic_saat().substr(3,2).c_str());
-//							kayitli_bts_saat=atoi(akademisyenler[akademisyen_sec-1].r[i].get_bitis_saat().substr(0,2).c_str());
-//							kayitli_bts_dakika=atoi(akademisyenler[akademisyen_sec-1].r[i].get_bitis_saat().substr(3,2).c_str());
-//							kayitli_bsl_tum_saat=kayitli_bsl_saat*100+kayitli_bsl_dakika;
-//							kayitli_bts_tum_saat=kayitli_bts_saat*100+kayitli_bts_dakika;
-//							if((bsl_tum_saat>=kayitli_bsl_tum_saat && bsl_tum_saat<kayitli_bts_tum_saat) || (bts_tum_saat>kayitli_bsl_tum_saat && bts_tum_saat<=kayitli_bts_tum_saat)){
-//								cout<<endl<<"Secilen akademisyenin belirtilen zaman icinde randevusu bulunmakta!"<<endl;Sleep(1500);
-//								goto randevu_olustur_baslangic;
-//							}
-//						}
-//					}
-					
-//					Randevu *temp=new Randevu[ogrenciler[ogrenci_sec-1].get_randevu_say()];
-//					for(int i=0;i<ogrenciler[ogrenci_sec-1].get_randevu_say();i++){
-//						temp[i].set_kisi(ogrenciler[ogrenci_sec-1].r[i].get_kisi());
-//						temp[i].set_tarih(ogrenciler[ogrenci_sec-1].r[i].get_tarih());
-//						temp[i].set_baslangic_saat(ogrenciler[ogrenci_sec-1].r[i].get_baslangic_saat());
-//						temp[i].set_bitis_saat(ogrenciler[ogrenci_sec-1].r[i].get_baslangic_saat(),randevu_sure);
-//					}
-//					ogrenciler[ogrenci_sec-1].set_randevu_say(ogrenciler[ogrenci_sec-1].get_randevu_say()+1);
-//					ogrenciler[ogrenci_sec-1].r=new Randevu[ogrenciler[ogrenci_sec-1].get_randevu_say()];
-//					for(int i=0;i<ogrenciler[ogrenci_sec-1].get_randevu_say()-1;i++){
-//						ogrenciler[ogrenci_sec-1].r[i].set_kisi(temp[i].get_kisi());
-//						ogrenciler[ogrenci_sec-1].r[i].set_tarih(temp[i].get_tarih());
-//						ogrenciler[ogrenci_sec-1].r[i].set_baslangic_saat(temp[i].get_baslangic_saat());
-//						ogrenciler[ogrenci_sec-1].r[i].set_bitis_saat(temp[i].get_baslangic_saat(),randevu_sure);
-//					}
-//					delete[] temp;
-//					ogrenciler[ogrenci_sec-1].r[ogrenciler[ogrenci_sec-1].get_randevu_say()-1].set_kisi(akademisyenler[akademisyen_sec-1].getsicil_no());
-//					ogrenciler[ogrenci_sec-1].r[ogrenciler[ogrenci_sec-1].get_randevu_say()-1].set_tarih(tarih);
-//					ogrenciler[ogrenci_sec-1].r[ogrenciler[ogrenci_sec-1].get_randevu_say()-1].set_baslangic_saat(baslangic_saat);
-//					ogrenciler[ogrenci_sec-1].r[ogrenciler[ogrenci_sec-1].get_randevu_say()-1].set_bitis_saat(baslangic_saat,randevu_sure);
-//					temp=new Randevu[akademisyenler[akademisyen_sec-1].get_randevu_say()];
-//					for(int i=0;i<akademisyenler[akademisyen_sec-1].get_randevu_say();i++){
-//						temp[i].set_kisi(akademisyenler[akademisyen_sec-1].r[i].get_kisi());
-//						temp[i].set_tarih(akademisyenler[akademisyen_sec-1].r[i].get_tarih());
-//						temp[i].set_baslangic_saat(akademisyenler[akademisyen_sec-1].r[i].get_baslangic_saat());
-//						temp[i].set_bitis_saat(akademisyenler[akademisyen_sec-1].r[i].get_baslangic_saat(),randevu_sure);
-//					}
-//					akademisyenler[akademisyen_sec-1].set_randevu_say(akademisyenler[akademisyen_sec-1].get_randevu_say()+1);
-//					akademisyenler[akademisyen_sec-1].r=new Randevu[akademisyenler[akademisyen_sec-1].get_randevu_say()];
-//					for(int i=0;i<akademisyenler[akademisyen_sec-1].get_randevu_say()-1;i++){
-//						akademisyenler[akademisyen_sec-1].r[i].set_kisi(temp[i].get_kisi());
-//						akademisyenler[akademisyen_sec-1].r[i].set_tarih(temp[i].get_tarih());
-//						akademisyenler[akademisyen_sec-1].r[i].set_baslangic_saat(temp[i].get_baslangic_saat());
-//						akademisyenler[akademisyen_sec-1].r[i].set_bitis_saat(temp[i].get_baslangic_saat(),randevu_sure);
-//					}
-//					delete[] temp;
-//					akademisyenler[akademisyen_sec-1].r[akademisyenler[akademisyen_sec-1].get_randevu_say()-1].set_kisi(ogrenciler[ogrenci_sec-1].getno());
-//					akademisyenler[akademisyen_sec-1].r[akademisyenler[akademisyen_sec-1].get_randevu_say()-1].set_tarih(tarih);
-//					akademisyenler[akademisyen_sec-1].r[akademisyenler[akademisyen_sec-1].get_randevu_say()-1].set_baslangic_saat(baslangic_saat);
-//					akademisyenler[akademisyen_sec-1].r[akademisyenler[akademisyen_sec-1].get_randevu_say()-1].set_bitis_saat(baslangic_saat,randevu_sure);
-					
+					}	
 					academicians[select_academician-1].add_appointment_by_user(students[select_student-1].get_student_no(),date,begin_time,appointment_length);
 					students[select_student-1].add_appointment_by_user(academicians[select_academician-1].get_registration_number(),date,begin_time,appointment_length);
 					write_appointment_on_document(students,student_count,academicians,academician_count);
@@ -1092,54 +925,11 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 					for(int j=0;j<student_count;j++){
 						if(students[j].get_student_no() == student_no){
 							students[j].delete_appointment(academician_registration_no, date_of_appointment, begin_time_of_appointment, end_time_of_appointment);
-							
-//							Randevu *temp=new Randevu[ogrenciler[j].get_randevu_say()-1];
-//							int p=0;
-//							for(int k=0;k<ogrenciler[j].get_randevu_say();k++){
-//								if(ogrenciler[j].r[k].get_kisi()==aka_sicil && ogrenciler[j].r[k].get_tarih()==tarih && ogrenciler[j].r[k].get_baslangic_saat()==basla && ogrenciler[j].r[k].get_bitis_saat()==bitis){
-//									continue;
-//								}
-//								temp[p].set_kisi(ogrenciler[j].r[k].get_kisi());
-//								temp[p].set_tarih(ogrenciler[j].r[k].get_tarih());
-//								temp[p].set_baslangic_saat(ogrenciler[j].r[k].get_baslangic_saat());
-//								temp[p].set_bitis_saat(ogrenciler[j].r[k].get_bitis_saat());
-//								p++;
-//							}
-//							ogrenciler[j].set_randevu_say(ogrenciler[j].get_randevu_say()-1);
-//							ogrenciler[j].r=new Randevu[ogrenciler[j].get_randevu_say()];
-//							for(int k=0;k<ogrenciler[j].get_randevu_say();k++){
-//								ogrenciler[j].r[k].set_kisi(temp[k].get_kisi());
-//								ogrenciler[j].r[k].set_tarih(temp[k].get_tarih());
-//								ogrenciler[j].r[k].set_baslangic_saat(temp[k].get_baslangic_saat());
-//								ogrenciler[j].r[k].set_bitis_saat(temp[k].get_bitis_saat());
-//							}
-//							delete[] temp;
 						}
 					}
 					for(int j = 0; j < academician_count; j++){
 						if(academicians[j].get_registration_number() == academician_registration_no){
 							academicians[j].delete_appointment(student_no,date_of_appointment,begin_time_of_appointment,end_time_of_appointment);
-//							Randevu *temp=new Randevu[akademisyenler[j].get_randevu_say()-1];
-//							int p=0;
-//							for(int k=0;k<akademisyenler[j].get_randevu_say();k++){
-//								if(akademisyenler[j].r[k].get_kisi()==ogr_no && akademisyenler[j].r[k].get_tarih()==tarih && akademisyenler[j].r[k].get_baslangic_saat()==basla && akademisyenler[j].r[k].get_bitis_saat()==bitis){
-//									continue;
-//								}
-//								temp[p].set_kisi(akademisyenler[j].r[k].get_kisi());
-//								temp[p].set_tarih(akademisyenler[j].r[k].get_tarih());
-//								temp[p].set_baslangic_saat(akademisyenler[j].r[k].get_baslangic_saat());
-//								temp[p].set_bitis_saat(akademisyenler[j].r[k].get_bitis_saat());
-//								p++;
-//							}
-//							akademisyenler[j].set_randevu_say(akademisyenler[j].get_randevu_say()-1);
-//							akademisyenler[j].r=new Randevu[akademisyenler[j].get_randevu_say()];
-//							for(int k=0;k<akademisyenler[j].get_randevu_say();k++){
-//								akademisyenler[j].r[k].set_kisi(temp[k].get_kisi());
-//								akademisyenler[j].r[k].set_tarih(temp[k].get_tarih());
-//								akademisyenler[j].r[k].set_baslangic_saat(temp[k].get_baslangic_saat());
-//								akademisyenler[j].r[k].set_bitis_saat(temp[k].get_bitis_saat());
-//							}
-//							delete[] temp;
 						}
 					}
 					write_appointment_on_document(students,student_count,academicians,academician_count);
