@@ -1,7 +1,0 @@
-Matematik 10 50 Yazar X usernameX usernameX@hotmail.com 1990 2018 25 10 05 12 50
-Fizik 100 0 Yazar Y usernameY usernameY@hotmail.com 1990 2018 35 10 05 12 50
-Kimya 10 28 Yazar Y usernameY usernameY@hotmail.com 1990 2019 25 10 05 12 50
-Biyoloji 10 50 Yazar Y usernameY usernameY@hotmail.com 1990 2019 25 10 05 12 50
-Edebiyat 150 25 Yazar Z usernameZ usernameZ@hotmail.com 1990 2019 25 10 05 12 50
-Ingilizce 10 28 Yazar A usernameA usernameA@hotmail.com 1990 2019 25 10 05 12 50
-Geometri 10 10 Yazar X usernameX usernameX@hotmail.com 1990 2019 25 10 05 12 50
