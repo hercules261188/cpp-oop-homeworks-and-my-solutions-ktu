@@ -186,7 +186,7 @@ void getDocumentCountFromFile(ifstream &documentsFile, int &documentCount)
 {
 	char data[350];
 again_file_control:
-	documentsFile.open("Document.txt");
+	documentsFile.open("./doc/Document.txt");
 	if (!documentsFile)
 	{
 		cout << "Document file does not found." << endl;
@@ -214,7 +214,7 @@ again_file_control:
 
 void getDocumentsFromFile(ifstream &documentsFile, Document *documents)
 {
-	documentsFile.open("Document.txt");
+	documentsFile.open("./doc/Document.txt");
 	int index = 0;
 	while (!documentsFile.eof())
 	{
