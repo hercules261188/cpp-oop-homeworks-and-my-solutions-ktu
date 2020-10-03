@@ -1,4 +1,4 @@
-<h1 align="center">🖼 🖌 Simple Image Processes with C++</h1>
+<h1 align="center">🖼 🖌 Simple Image Processing with C++</h1>
 
 <p align="center">This program is read bytes from binary file to create image to txt file and then to do some image processing operations on it.</p>
 
