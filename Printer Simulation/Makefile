@@ -1,5 +1,4 @@
 VPATH = ./src
-
 CXXFLAGS= -I "./include"
 
 compile&run: PrinterSimulation.o compile
