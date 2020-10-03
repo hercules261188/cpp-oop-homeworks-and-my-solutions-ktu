@@ -83,37 +83,69 @@ void Image::sobel(){
     delete[] tempArray;
 }
 
-Image Image::operator+(const Image& image) const{
-    Image result;
-    result.height = this->height;
-    result.width = this->width;
-    result.fileName = "OR.txt";
-    result.pixels = new BYTE*[this->height];
-    for(int i = 0; i < this->height; i++){
-        result.pixels[i] = new BYTE[this->width];
-        for(int j = 0; j < this->width; j++){
-            result.pixels[i][j] = this->pixels[i][j] & image.pixels[i][j];
-        }
-    }
-
-    return result;
+Image& Image::operator=(const Image& image)
+{
+  this->fileName = image.fileName;
+  this->height = image.height;
+  this->width = image.width;
+  this->pixels = new BYTE*[this->height];
+  for(int i = 0; i < this->height; i++){
+      this->pixels[i] = new BYTE[this->width];
+      for(int j = 0; j < this->width; j++){
+          this->pixels[i][j] = image.pixels[i][j];
+      }
+  }
+  return *this;
 }
 
-Image Image::operator*(const Image& image) const{
-    Image result;
-    result.height = this->height;
-    result.width = this->width;
-    result.fileName = "AND.txt";
-    result.pixels = new BYTE*[this->height];
+Image& Image::operator+(const Image& image){
+    Image *result = new Image();
+    result->height = this->height;
+    result->width = this->width;
+    result->fileName = new char[8];
+    result->fileName = (char*)"OR.txt";
+    result->pixels = new BYTE*[this->height];
     for(int i = 0; i < this->height; i++){
-        result.pixels[i] = new BYTE[this->width];
+        result->pixels[i] = new BYTE[this->width];
         for(int j = 0; j < this->width; j++){
-            result.pixels[i][j] = this->pixels[i][j] & image.pixels[i][j];
+            result->pixels[i][j] = this->pixels[i][j] | image.pixels[i][j];
         }
     }
-
-    return result;
+    return *result;
 }
+
+Image& Image::operator*(const Image& image){
+    Image *result = new Image();
+    result->height = this->height;
+    result->width = this->width;
+    result->fileName = new char[8];
+    result->fileName = (char*)"AND.txt";
+    result->pixels = new BYTE*[this->height];
+    for(int i = 0; i < this->height; i++){
+        result->pixels[i] = new BYTE[this->width];
+        for(int j = 0; j < this->width; j++){
+            result->pixels[i][j] = this->pixels[i][j] & image.pixels[i][j];
+        }
+    }
+    return *result;
+}
+
+Image& Image::operator!(){
+    Image *result = new Image();
+    result->height = this->height;
+    result->width = this->width;
+    result->fileName = new char[8];
+    result->fileName = (char*)"NOT.txt";
+    result->pixels = new BYTE*[this->height];
+    for(int i = 0; i < this->height; i++){
+        result->pixels[i] = new BYTE[this->width];
+        for(int j = 0; j < this->width; j++){
+            result->pixels[i][j] = !this->pixels[i][j];
+        }
+    }
+    return *result;
+}
+
 
 istream& operator>> (char* fileName, Image& image)
 {
@@ -142,9 +174,10 @@ istream& operator>> (char* fileName, Image& image)
     file.close();
 
     image.setPixels(pixels);
+    
 }
 
-ostream& operator<< (char* fileName, const Image& image)
+ostream& operator<< (char* fileName, Image& image)
 {
     char filePath[100];
     strcpy(filePath, "./doc/outputs/");
@@ -158,11 +191,13 @@ ostream& operator<< (char* fileName, const Image& image)
         file << endl;
     }
     file.close();
+    return cout << fileName << " is printed now!" << endl;
 }
 
 
 Image::~Image()
 {
+    cout<< this->getFileName() << " destructor is called now!"<<endl;
     for(int i = 0; i < this->getHeight(); i++){
         delete[] this->pixels[i];
     }

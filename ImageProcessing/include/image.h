@@ -38,10 +38,12 @@ public:
     void setFileName(char* fileName);
     char* getFileName();
 
-    Image operator+ (const Image& image) const;
-    Image operator* (const Image& image) const;
+    Image& operator= (const Image& image);
+    Image& operator+ (const Image& image);
+    Image& operator* (const Image& image);
+    Image& operator! ();
 
-    friend ostream& operator<< (char* fileName, const Image& image);
+    friend ostream& operator<< (char* fileName, Image& image);
     friend istream& operator>> (char* fileName, Image& image);
 
     ~Image();
