@@ -1,6 +1,6 @@
 #ifndef ACADEMICIAN_H
 #define ACADEMICIAN_H
-#include "human.h"
+#include "./human.h"
 
 class Academician:public Human{
 	private:

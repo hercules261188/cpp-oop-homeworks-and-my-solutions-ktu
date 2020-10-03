@@ -1,6 +1,6 @@
 #ifndef HUMAN_H
 #define HUMAN_H
-#include "appointment.h"
+#include "./appointment.h"
 
 class Human{
 	private:

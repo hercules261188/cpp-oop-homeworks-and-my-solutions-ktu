@@ -13,8 +13,9 @@
 #include <windows.h>
 #include <ctime>
 #include <sstream>
-#include "student.h"
-#include "academician.h"
+#include <climits>
+#include "../include/student.h"
+#include "../include/academician.h"
 
 using namespace std;
 
@@ -60,7 +61,7 @@ int find_academician_count(){
 	int academician_count=0;
 	char data[350];
 	ifstream academician_file;
-	academician_file.open("academicians.txt");
+	academician_file.open("./doc/academicians.txt");
 	if(!academician_file || file_is_empty(academician_file)){
 		academician_file.close();
 		return academician_count;
@@ -76,7 +77,7 @@ int find_academician_count(){
 void add_academician_from_file(Academician *academicians){
 	int i=0;
 	ifstream academician_file;
-	academician_file.open("academicians.txt");
+	academician_file.open("./doc/academicians.txt");
 	while(!academician_file.eof()){
 	int registration_number;
 	string name, surname, majors_branch, e_mail, telephone, degree;
@@ -112,7 +113,7 @@ int find_student_count(){
 	int student_count=0;
 	char data[350];
 	ifstream student_file;
-	student_file.open("students.txt");
+	student_file.open("./doc/students.txt");
 	if(!student_file || file_is_empty(student_file)){
 		student_file.close();
 		return student_count;
@@ -128,7 +129,7 @@ int find_student_count(){
 void add_student_from_file(Student *students){
 	int i=0;
 	ifstream student_file;	
-	student_file.open("students.txt");
+	student_file.open("./doc/students.txt");
 	while(!student_file.eof()){
 		int student_no, registration_year;
 		string name, surname, department, e_mail, telephone;
@@ -162,7 +163,7 @@ void add_student_from_file(Student *students){
 
 void add_appointment_from_file(Student *students,Academician *academicians,int student_count,int academician_count){
 	ifstream appointment_file;
-	appointment_file.open("appointments.txt");
+	appointment_file.open("./doc/appointments.txt");
 	if(!appointment_file || file_is_empty(appointment_file)){
 		appointment_file.close();
 		return;
@@ -238,7 +239,7 @@ void add_student_by_user(Student *students,int student_count){
 }
 
 void delete_student(Student *students,int student_count){
-	ofstream student_file("students.txt");
+	ofstream student_file("./doc/students.txt");
 	for(int i = 0; i < student_count; i++){
 		if(i == 0){
 			student_file<<students[i].get_student_no()<<" ";
@@ -303,7 +304,7 @@ void add_academician_by_user(Academician *academicians,int academician_count){
 	cin>>degree;
 	academicians[academician_count-1].set_degree(degree);
 	ofstream academician_file;
-	academician_file.open("academicians.txt",ios::app);
+	academician_file.open("./doc/academicians.txt",ios::app);
 	if(academician_count - 1 == 0){
 		academician_file<<academicians[academician_count-1].get_registration_number()<<" ";
 	}
@@ -320,7 +321,7 @@ void add_academician_by_user(Academician *academicians,int academician_count){
 }
 
 void delete_academician(Academician *academicians,int academician_count){
-	ofstream academician_file("academicians.txt");
+	ofstream academician_file("./doc/academicians.txt");
 	for(int i=0;i<academician_count;i++){
 		if(i==0){
 			academician_file<<academicians[i].get_registration_number()<<" ";
@@ -347,7 +348,7 @@ void delete_academician(Academician *academicians,int academician_count){
 void write_appointment_on_document(Student *students,int student_count,Academician *academicians,int academician_count){
 	bool first_line = true;
 	ofstream appointment_file;
-	appointment_file.open("appointments.txt");
+	appointment_file.open("./doc/appointments.txt");
 	for(int i=0;i<student_count;i++){
 		if(students[i].get_appointment_count()!=0){
 			for(int j = 0; j < students[i].get_appointment_count(); j++){
@@ -424,7 +425,7 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 				students=new Student[student_count];
 				add_student_by_user(students, student_count);
 				ofstream student_file;
-				student_file.open("students.txt",ios::app);
+				student_file.open("./doc/students.txt",ios::app);
 				student_file<<students[student_count-1].get_student_no()<<" ";
 				student_file<<students[student_count-1].get_name()<<" ";
 				student_file<<students[student_count-1].get_surname()<<" ";
@@ -449,7 +450,7 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 				delete[] temp;
 				add_student_by_user(students,student_count);
 				ofstream student_file;
-				student_file.open("students.txt",ios::app);
+				student_file.open("./doc/students.txt",ios::app);
 				student_file<<endl<<students[student_count-1].get_student_no()<<" ";
 				student_file<<students[student_count-1].get_name()<<" ";
 				student_file<<students[student_count-1].get_surname()<<" ";
@@ -621,7 +622,7 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 				goto appointment_main_screen;
 			else if(appointment_list_selection==1){
 				ifstream appointment_file;
-				appointment_file.open("appointments.txt");
+				appointment_file.open("./doc/appointments.txt");
 				if(!appointment_file || file_is_empty(appointment_file)){
 					cout<<endl<<"Kayitli randevu yok."<<endl;Sleep(1000);goto appointment_main_screen;
 				}
@@ -871,7 +872,7 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 		}
 		else if(appointment_main_screen_selection==3){
 			delete_appointment_screen:ifstream appointment_file;
-			appointment_file.open("appointments.txt");
+			appointment_file.open("./doc/appointments.txt");
 			if(!appointment_file || file_is_empty(appointment_file)){
 				cout<<endl<<"Kayitli randevu yok."<<endl;Sleep(1000);goto appointment_main_screen;
 			}
@@ -909,7 +910,7 @@ void main_menu(Student *students,Academician *academicians,int &student_count,in
 					i = 1;
 					int student_no,academician_registration_no;
 					string date_of_appointment,begin_time_of_appointment,end_time_of_appointment;
-					appointment_file.open("appointments.txt");
+					appointment_file.open("./doc/appointments.txt");
 					while(!appointment_file.eof()){
 						appointment_file>>student_no;
 						appointment_file>>academician_registration_no;

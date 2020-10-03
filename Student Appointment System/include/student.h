@@ -1,6 +1,6 @@
 #ifndef STUDENT_H
 #define STUDENT_H
-#include "human.h"
+#include "./human.h"
 
 class Student:public Human{
 	private:
