@@ -16,18 +16,18 @@
     <tbody>
         <tr>
             <td>
-                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/ImageProcessing/doc/inputs/image_file1.png">
+                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/Image%20Processing/doc/inputs/image_file1.png">
             </td>
             <td>
-                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/ImageProcessing/doc/outputs/image_file1.png">
+                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/Image%20Processing/doc/outputs/image_file1.png">
             </td>
         </tr>
         <tr>
             <td>
-                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/ImageProcessing/doc/inputs/image_file2.png">
+                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/Image%20Processing/doc/inputs/image_file2.png">
             </td>
             <td>
-                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/ImageProcessing/doc/outputs/image_file2.png">
+                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/Image%20Processing/doc/outputs/image_file2.png">
             </td>
         </tr>
     </tbody>
