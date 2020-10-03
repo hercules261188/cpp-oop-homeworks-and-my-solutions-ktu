@@ -1,6 +1,6 @@
-# 📰 Simple Image Process Operations with C++
+<h1 align="center">🖼 🖌 Simple Image Process Operations with C++</h1>
 
-This program is read bytes from binary file to create image to txt file and then to do some image processing operations on it.
+<p align="center">This program is read bytes from binary file to create image to txt file and then to do some image processing operations on it.</p>
 
 <table align="center">
     <thead>
