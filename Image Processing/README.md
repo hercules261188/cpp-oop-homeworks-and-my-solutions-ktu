@@ -36,7 +36,7 @@
 ### Installation
 
 - Clone this repo to your local machine using `https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu`
-- Go to the ImageProcessing folder where in the project directory
+- Go to the Image Processing folder where in the project directory
 
 ### Usage
 
