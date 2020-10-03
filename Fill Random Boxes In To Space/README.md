@@ -1,4 +1,4 @@
-<h1 align="center">🖼 🖌 Fill Random Boxes In To Space with C++</h1>
+<h1 align="center">🔲 Fill Random Boxes In To Space with C++</h1>
 
 <p align="center">This program fills a space with user-specified boxes.</p>
 
