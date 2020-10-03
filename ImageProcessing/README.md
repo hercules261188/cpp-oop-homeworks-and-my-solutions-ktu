@@ -2,38 +2,36 @@
 
 This program is read bytes from binary file to create image to txt file and then to do some image processing operations on it.
 
-<p align = "center">
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    Input
-                </th>
-                <th>
-                    Output
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <img src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/ImageProcessing/doc/inputs/image_file1.png">
-                </td>
-                <td>
-                    <img src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/ImageProcessing/doc/outputs/image_file1.png">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/ImageProcessing/doc/inputs/image_file2.png">
-                </td>
-                <td>
-                    <img src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/ImageProcessing/doc/outputs/image_file2.png">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</p>
+<table align="center">
+    <thead>
+        <tr>
+            <th>
+                Input
+            </th>
+            <th>
+                Output
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/ImageProcessing/doc/inputs/image_file1.png">
+            </td>
+            <td>
+                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/ImageProcessing/doc/outputs/image_file1.png">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/ImageProcessing/doc/inputs/image_file2.png">
+            </td>
+            <td>
+                <img width="220px" height="200px" src = "https://github.com/zumrudu-anka/cpp-oop-homeworks-and-my-solutions-ktu/blob/master/ImageProcessing/doc/outputs/image_file2.png">
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ### Installation
 
